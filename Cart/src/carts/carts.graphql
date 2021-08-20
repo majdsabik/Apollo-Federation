@@ -1,0 +1,29 @@
+type Cart @key(fields: "id") {
+  customerId: String
+  customerEmail: String
+  anonymousId: String
+  id: String!
+  version: Int!
+}
+
+type CartQueryResult {
+  results: [Cart!]!
+}
+
+scalar Long
+
+extend type Query {
+  showCart(id: String!): Cart
+  findCart(customerId: String!): CartQueryResult!
+  listCarts(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): CartQueryResult!
+}
+
+extend type Customer @key(fields: "id") {
+  id: String! @external
+  carts: CartQueryResult
+}

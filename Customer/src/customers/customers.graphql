@@ -1,0 +1,21 @@
+type Customer @key(fields: "id") {
+  id: String!
+  version: Int!
+  email: String!
+  firstName: String!
+  lastName: String!
+}
+
+type CustomerQueryResult {
+  results: [Customer!]!
+}
+
+extend type Query {
+  showCustomer(id: String!): Customer
+  listCustomers(
+    where: String
+    sort: [String!]
+    limit: Int
+    offset: Int
+  ): CustomerQueryResult!
+}

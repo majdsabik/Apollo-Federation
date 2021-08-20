@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nestjs-cart
+  labels:
+    app: nestjs-cart
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nestjs-cart
+  template:
+    metadata:
+      labels:
+        app: nestjs-cart
+    spec:
+      restartPolicy: Always
+      containers:
+      - name: nestjs-cart
+        image: docker.io/nestjs/cart:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
+---
+apiVersion: "autoscaling.k8s.io/v1"
+kind: VerticalPodAutoscaler
+metadata:
+  name: nestjs-cart-vpa
+spec:
+  targetRef:
+    apiVersion: "apps/v1"
+    kind: Deployment
+    name: nestjs-cart
+  resourcePolicy:
+    containerPolicies:
+      - containerName: '*'
+        minAllowed:
+          cpu: 100m
+          memory: 128Mi
+        maxAllowed:
+          cpu: 1
+          memory: 512Mi
+        controlledResources: ["cpu", "memory"]
