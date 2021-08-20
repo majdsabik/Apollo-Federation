@@ -8,7 +8,7 @@ export class CustomersService {
       'https://api.europe-west1.gcp.commercetools.com/majds_demo/graphql';
     const client = new GraphQLClient(endpoint);
     client.setHeaders({
-      Authorization: 'Bearer DPYj5TfuTgH4a9CvfE1hr8ZGOIJ0qEcA',
+      Authorization: 'Insert Bearer token here',
     });
     const query = gql`
       query customers {
@@ -35,7 +35,7 @@ export class CustomersService {
       'https://api.europe-west1.gcp.commercetools.com/majds_demo/graphql';
     const client = new GraphQLClient(endpoint);
     client.setHeaders({
-      Authorization: 'Bearer DPYj5TfuTgH4a9CvfE1hr8ZGOIJ0qEcA',
+      Authorization: 'Insert Bearer token here',
     });
     const query = gql`
       query customer {

@@ -9,7 +9,7 @@ export class CartsService {
     const client = new GraphQLClient(endpoint);
     client.setHeaders({
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      Authorization: 'Bearer DPYj5TfuTgH4a9CvfE1hr8ZGOIJ0qEcA',
+      Authorization: 'Insert Bearer token here',
     });
     const query = gql`
       query cart {
@@ -45,7 +45,7 @@ export class CartsService {
       'https://api.europe-west1.gcp.commercetools.com/majds_demo/graphql';
     const client = new GraphQLClient(endpoint);
     client.setHeaders({
-      Authorization: 'Bearer DPYj5TfuTgH4a9CvfE1hr8ZGOIJ0qEcA',
+      Authorization: 'Insert Bearer token here',
     });
     const query = gql`
       query carts {
@@ -80,7 +80,7 @@ export class CartsService {
       'https://api.europe-west1.gcp.commercetools.com/majds_demo/graphql';
     const client = new GraphQLClient(endpoint);
     client.setHeaders({
-      Authorization: 'Bearer DPYj5TfuTgH4a9CvfE1hr8ZGOIJ0qEcA',
+      Authorization: 'Insert Bearer token here',
     });
     const query = gql`
       query cart{
